@@ -72,8 +72,8 @@ export const getAllPlaygroundForUser = async () => {
     });
 
     return playground;
-  } catch (error) {
-    console.log(error);
+  } catch {
+    return [];
   }
 };
 
@@ -139,8 +139,8 @@ export const deleteProjectById = async (id: string) => {
     }
 
     revalidatePath("/dashboard");
-  } catch (error) {
-    console.log(error);
+  } catch {
+    throw new Error("Playground not found or unauthorized");
   }
 };
 
@@ -169,8 +169,7 @@ export const editProjectById = async (
     }
 
     revalidatePath("/dashboard");
-  } catch (error) {
-    console.log(error);
+  } catch {
     throw error;
   }
 };
